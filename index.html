@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>N G</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container mt-4">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <h1 class="text-center mb-4" style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">The Number Game</h1>
+        <div class="mb-4">
+          <label for="numInput" class="form-label" style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">Enter a number of your choice:</label>
+          <input type="number" id="numInput" class="form-control" placeholder="Type here">
+        </div>
+        <div id="infooutput" class="alert mt-4" role="alert" style="display:none;"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('numInput').addEventListener('input',function(){
+      const input=parseInt(this.value,10);
+      const output=document.getElementById('infooutput');
+
+      if(input<0){
+        output.style.display='block';
+        output.className='alert alert-danger';
+        output.textContent='please enter a positive value';
+      }else if(input%2===0){
+        const evens=[input+2,input+4,input+6];
+        output.style.display='block';
+        output.className='alert alert-success';
+        output.textContent=`The next 3 even no are:${evens.join(',')}`;
+      }else if(input%2===1){
+        const odds=[input+2,input+4,input+6];
+        output.style.display='block';
+        output.className='alert alert-success';
+        output.textContent=`The next 3 odd no are:${odds.join(',')}`;
+      }else{
+        output.style.display='block';
+        output.className='alert alert-secondary';
+        output.textContent='No input';
+      }
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
